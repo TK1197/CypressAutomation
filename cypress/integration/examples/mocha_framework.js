@@ -1,4 +1,5 @@
 ///<reference types="Cypress" />
+import signup_objects from '../Objects/signup_objects'
 
 describe('Testing with Mocha Framework', function() {
 
@@ -12,17 +13,19 @@ describe('Testing with Mocha Framework', function() {
 
     it('First test case', function() {
 
+        const singupobjects = new signup_objects()
+
         cy.visit('https://rahulshettyacademy.com/angularpractice/')
-        cy.get("div[class='form-group'] input[name='name']").type(this.data.name)
+        singupobjects.setTextName().type(this.data.name)
         //verify entered data below
-        cy.get(':nth-child(4) > .ng-valid').should('have.value', this.data.name)
-        cy.get("div[class='form-group'] input[name='email']").type(this.data.email)
-        cy.get("div[class='form-group'] input[type='password']").type(this.data.password)
-        cy.get("input[id='exampleCheck1']").check().should('be.checked')
-        cy.get('select').select(this.data.gender)
-        cy.get('#inlineRadio2').click()
-        cy.get('div[class="form-group"] input[name="bday"]').type(this.data.date)
-        cy.get('input[value="Submit"]').click()
+        singupobjects.verifysetTextName().should('have.value', this.data.name)
+        singupobjects.setTextEmail().type(this.data.email)
+        singupobjects.setTextPassword().type(this.data.password)
+        singupobjects.clickCheckBox().check().should('be.checked')
+        singupobjects.selectGender().select(this.data.gender)
+        singupobjects.selectEmplomentStatus().click()
+        singupobjects.setTextBirthday().type(this.data.date)
+        singupobjects.clickSubmitbtn().click()
         cy.get('.alert')
     })
 })
