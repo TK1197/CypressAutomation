@@ -1,5 +1,5 @@
 # CypressAutomation
 Automation Testing | Javascript | VS Code | Mocha
 
-To be Add
-API | CI/CD
+***To be Add
+API | CI/CD | DB
